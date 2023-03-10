@@ -1,3 +1,10 @@
+*{
+  margin: 0;padding: 0;
+  box-sizing: border-box;
+  
+}
+
+
 .mat-mdc-radio-button ~ .mat-mdc-radio-button {
     margin-left: 16px;
   }

@@ -1,3 +1,11 @@
-.example-spacer {
-    flex: 1 1 auto;
-  }
+
+
+  .container-fluid{
+    width: 100vw;
+}
+
+mat-toolbar{
+  width: vh;
+display: flex;  
+justify-content: space-between;
+}

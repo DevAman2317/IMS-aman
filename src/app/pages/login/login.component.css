@@ -1,0 +1,36 @@
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 30px auto 0px;
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+}
+.footer-buttons{
+    display: flex;
+    
+    align-items: center;
+    margin-top: 10px;
+}
+.links{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: blue;
+    text-decoration: underline;
+}
+
+small{
+    color: red;
+    margin-bottom: 8px;
+    margin-top: -17px;
+    margin-left: 8px;
+    font-size: 12px;
+  }
+
+#spinner{
+    position: absolute;
+    top: 45%;
+    left: 45%;
+}

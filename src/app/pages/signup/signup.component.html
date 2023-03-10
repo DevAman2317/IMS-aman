@@ -1,0 +1,93 @@
+<div class="container">
+    <form [formGroup]="registration">
+        <h4>Register Yourself</h4>
+        <mat-divider></mat-divider>
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput name="fname" formControlName="fname">
+        </mat-form-field>
+        <small *ngIf="ctrl['fname']?.invalid&&(ctrl['fname']?.touched||ctrl['fname']?.dirty)">
+            <small *ngIf="ctrl['fname'].errors && ctrl['fname'].errors['required']">First Name missing </small>
+            <small *ngIf="ctrl['fname'].errors && ctrl['fname'].errors['minlength']">First Name can't be less than 3 characters  </small>
+        </small>
+
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput name="lname" formControlName="lname">
+        </mat-form-field>
+
+        <small *ngIf="ctrl['lname']?.invalid&&(ctrl['lname']?.touched||ctrl['lname']?.dirty)">
+            <small *ngIf="ctrl['lname'].errors && ctrl['lname'].errors['required']">Last Name missing </small>
+            <small *ngIf="ctrl['lname'].errors && ctrl['lname'].errors['minlength']">Last Name can't be less than 3 characters  </small>
+        </small>
+
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" matInput name="email" #email  formControlName="email" (blur)="checkEmail(email.value)">
+        </mat-form-field>
+        <small style="color:red;margin-bottom: 3px;" *ngIf="emailValidator">EmailId already in use</small>
+     
+        <small *ngIf="ctrl['email']?.invalid&&(ctrl['email']?.touched)">
+            <small *ngIf="ctrl['email'].errors && ctrl['email'].errors['required']">Email Id missing </small>
+            <small *ngIf="ctrl['email'].errors && ctrl['email'].errors['email']">Enter valid Email Id</small>
+        </small>
+
+
+
+        <mat-form-field>
+            <mat-label>Phone No.</mat-label>
+            <input type="text" matInput name="phno" formControlName="phno">
+        </mat-form-field>
+        <small *ngIf="ctrl['phno']?.invalid&&(ctrl['phno']?.touched)">
+            <small *ngIf="ctrl['phno'].errors && ctrl['phno'].errors['required']">Phone No. missing </small>
+            <small *ngIf="ctrl['phno'].errors && ctrl['phno'].errors['minlength']">Phone No. can't be less than 10 digit</small>
+            <small *ngIf="ctrl['phno'].errors && ctrl['phno'].errors['maxlength']">Phone No. can't be more than 10 digit</small>
+        </small>
+
+
+        <mat-form-field>
+            <mat-label>D.O.B</mat-label>
+            <input matInput [matDatepicker]="picker" name="dob" formControlName="dob">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div>
+            <mat-label>Gender</mat-label>
+            <mat-radio-group aria-label="Select an option" name="gender" formControlName="gender">
+                <mat-radio-button value="Male">Alpha Male</mat-radio-button>
+                <mat-radio-button value="Female">Sigma Male</mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <mat-form-field appearance="outline" >
+                <mat-label>Country</mat-label>
+                <mat-select name="countryId" formControlName="countryId">
+                    <mat-option *ngFor="let c of countryOption|keyvalue" (blur)="state(c.key)" [value]="c.key">{{c.value}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>State</mat-label>
+                <mat-select name="stateId" formControlName="stateId">
+                    <mat-option *ngFor="let s of stateOption|keyvalue" (blur)="city(s.key)" [value]="s.key">{{s.value}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>City</mat-label>
+                <mat-select name="cityId" formControlName="cityId">
+                    <mat-option *ngFor="let c of cityOption|keyvalue"   [value]="c.key">{{c.value}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+            <div class="buttons">
+                <button type="submit" [disabled]="control==true && registration.invalid " (click)="reg()" color="primary" mat-raised-button >Register</button>
+                <button type="reset" color="warn" mat-raised-button >Reset</button>
+            </div>
+
+
+
+    </form>
+</div>

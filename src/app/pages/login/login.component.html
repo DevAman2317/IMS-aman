@@ -1,0 +1,23 @@
+<div class="container">
+    <form [formGroup]="login">
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" name="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="pwd" name="pwd">
+        </mat-form-field>
+        <small style="color:red" *ngIf="loginMsg">{{loginMsg}}</small>
+        <span class="footer-buttons">
+            <button mat-raised-button color="primary"  (click)="loginbtn()">Login</button>
+        </span>
+        <div class="links" >
+            <p><a routerLink="/signup">Signup</a></p>
+            <p><a  routerLink="/forgotpwd">Forgot Password?</a></p>
+        </div>
+    </form>
+</div>
+
+<span id="spinner"> <mat-spinner diameter="50"  *ngIf="loader" ></mat-spinner>  </span>

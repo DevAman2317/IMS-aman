@@ -1,0 +1,27 @@
+<div class="container">
+    <form [formGroup]="unlockForm">
+        <mat-form-field>
+            <mat-label>Email Id</mat-label>
+            <input name="email" formControlName="email" type="email" matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Temporary Password</mat-label>
+            <input type="text" matInput name="tempPwd" formControlName="tempPwd">
+        </mat-form-field>
+<small *ngIf="unlockMsg">Incorrect Temporary Password</small>
+        <mat-form-field>
+            <mat-label>New Password</mat-label>
+            <input type="password" matInput name="newPwd" formControlName="newPwd"> 
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input type="password" (change)="samePwd()" matInput name="confirmPwd" formControlName="confirmPwd">
+        </mat-form-field>
+        <small *ngIf="pwdValidator" style="color:red">Password doesnot match</small>
+        <div class="buttons">
+            <button mat-raised-button color="primary" [disabled]="unlockForm.invalid && pwdValidator==true" (click)="unlockAcc()">Submit</button>
+        </div>
+    </form>
+</div>
